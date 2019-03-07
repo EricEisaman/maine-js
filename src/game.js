@@ -59,7 +59,7 @@ export default CS1=>{AFRAME.registerComponent('game', {
     p.id = newPlayerObject.id;
     p.name = newPlayerObject.name;
     p.setAttribute('position',`${newPlayerObject.data.position.x} ${newPlayerObject.data.position.y+0.7} ${newPlayerObject.data.position.z}`);
-    p.model.setAttribute('rotation',`${newPlayerObject.data.rotation.x} ${newPlayerObject.data.rotation.y} ${newPlayerObject.data.rotation.z}`);
+    p.model.setAttribute('rotation',`${-newPlayerObject.data.rotation.x} ${newPlayerObject.data.rotation.y+180} ${newPlayerObject.data.rotation.z}`);
     p.msg = document.createElement('a-entity');
     let test = `Hello\nI am\n${newPlayerObject.name}!`;
     p.msg.setAttribute('text',`value:${test};
@@ -68,8 +68,8 @@ export default CS1=>{AFRAME.registerComponent('game', {
                                    wrap-count:24; 
                                    color:yellow`);
     p.msg.setAttribute('position',`0 6 0`);
-    p.msg.setAttribute('rotation','0 180 0');
-    p.appendChild(p.msg);
+    p.msg.setAttribute('rotation','0 0 0');
+    p.model.appendChild(p.msg);
     CS1.scene.appendChild(p);
     CS1.otherPlayers[p.id]=p;
     CS1.sounds.playerJoined.play();
@@ -86,7 +86,7 @@ export default CS1=>{AFRAME.registerComponent('game', {
           }
           op.faceIndex = o[key].faceIndex;
           op.setAttribute('position',`${o[key].position.x} ${o[key].position.y+0.7} ${o[key].position.z}`);
-          op.model.setAttribute('rotation',`${o[key].rotation.x} ${o[key].rotation.y} ${o[key].rotation.z}`);
+          op.model.setAttribute('rotation',`${-o[key].rotation.x} ${o[key].rotation.y+180} ${o[key].rotation.z}`);
           // op.model.setAttribute('gltf-model',`url(${c.url})`);
           // op.model.setAttribute('animation-mixer',`clip:${c.animations.idle}`);
           // op.model.setAttribute('scale',`${c.scale} ${c.scale} ${c.scale}`);

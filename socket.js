@@ -21,7 +21,8 @@ module.exports = (io)=>{
           console.log(players);
           socket.emit('players-already-here',players);
           console.log('changedBodies length:',changedBodies.length);
-          if( (changedBodies.length > 0) && (Object.keys(players).length > 0) ) {
+          // (changedBodies.length > 0) && 
+          if((Object.keys(players).length > 0) ) {
            let ibs = [];
            for(name in bodies){
              ibs.push(bodies[name]);
@@ -103,6 +104,7 @@ module.exports = (io)=>{
           }
         });
         socket.on('initial-bodies-state',obj=>{
+          console.log('Initial bodies state received.');
           bodies = obj;
         });
         socket.on('update-bodies',function(data){
@@ -115,7 +117,7 @@ module.exports = (io)=>{
         });
         socket.on('arg',function(data){
           socket.ipLocal = data;
-          //console.log(`Client Info:\nPublic IP: ${socket.ip}  Local IP: ${socket.ipLocal}`);
+          console.log(`Client Info:\nPublic IP: ${socket.ip}  Local IP: ${socket.ipLocal}`);
         }); 
         socket.on('login',function(data){
           console.log(`User attempting to login with name: ${data.name} and password: ${data.pw}`);

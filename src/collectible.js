@@ -15,6 +15,7 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
     });
     if(!CS1.socket._callbacks["$update-collectible"])
     CS1.socket.on('update-collectible',data=>{
+      if(!(CS1.game && CS1.game.hasBegun))return;
       let collectedEntity = CS1.collectibles[data.index];
       collectedEntity.el.setAttribute('visible',false);
       collectedEntity.soundIsPlaying=true;
