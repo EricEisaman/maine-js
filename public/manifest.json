@@ -1,0 +1,22 @@
+{
+  "name": "ELHS CS1",
+  "short_name": "CS1",
+  "description": "ELHS Computer Science",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "type": "image/png",
+      "src": "https://cdn.glitch.com/9ad2ae7c-3f18-45f2-8917-4e675bd381da%2Feddies_192.png?1549770718530"
+    },
+    {
+      "sizes": "512x512",
+      "type": "image/png",
+      "src": "https://cdn.glitch.com/9ad2ae7c-3f18-45f2-8917-4e675bd381da%2Feddies_512.png?1549770721365"
+    }
+  ],
+  "display": "fullscreen",
+  "orientation":"landscape",
+  "background_color": "white",
+  "theme_color": "maroon",
+  "start_url": "/index.html"
+}

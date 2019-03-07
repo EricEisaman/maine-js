@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background:black;
+}
+#loading-screen {
+ background:black;
+ z-index:100;
+}
+#scene-container {
+ z-index:0;
+}
