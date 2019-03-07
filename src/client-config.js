@@ -1,5 +1,5 @@
 export default {
- gameName:"D3 Is Your Friend",
+ gameName:"Maine JS Meetup Group . . . . . . The question of whether a computer can think is no more interesting than the question of whether a submarine can swim. . . Edsger W. Dijkstra",
  // https://emojipedia.org/  leave as "" if you want no emoji
  emoji:"🏰",
  // https://www141.lunapic.com/editor/  http://icoconvert.com/
@@ -19,7 +19,7 @@ export default {
       url:"https://cdn.glitch.com/d9ff495e-24db-4a3f-b88d-05ddd4e02632%2Fdragon_orange.glb?1543069720785",
       scale:0.62, yOffset:0.8,
       animations:{idle:"Dragon_Flying"},
-      msg:{color: 'orange',offset: '0 4 -0.51'},
+      msg:{color: 'orange',offset: '0 6 -0.51'},
       thruster:{innerColor: "red",outerColor: "white"}
     },
     {

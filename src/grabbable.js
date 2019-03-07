@@ -131,6 +131,8 @@ export default (function grabbable(){AFRAME.registerComponent("grabbable", {
     
     if(!CS1.updateGrabbables)
     CS1.updateGrabbables = (grabbablesData)=>{
+        //console.log('Update Grabbables');
+        //console.log(grabbablesData);
         if(Object.keys(CS1.grabbables).length === 0 || !CS1.grabbables[grabbablesData[0].name] || !CS1.game.hasBegun) return;
         grabbablesData.forEach( (d,index)=>{
           let b = CS1.grabbables[d.name];
@@ -145,8 +147,9 @@ export default (function grabbable(){AFRAME.registerComponent("grabbable", {
         });
       }
     
-    if(!CS1.grabbables)CS1.grabbables={};
-    this.name=CS1.utils.uid();
+    //use object to allow for further development
+    if(!CS1.grabbables)CS1.grabbables={}; 
+    this.name=Object.keys(CS1.grabbables).length;
     CS1.grabbables[this.name]=this.el;
     
 	},

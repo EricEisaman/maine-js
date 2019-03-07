@@ -37,12 +37,28 @@ export default CS1=>{
     socket.playerData = playerData;
   }
   
+  socket.on('new-player', newPlayerObject=>{
+    if(CS1.debug)console.log('New player object received: ', newPlayerObject);
+    if(CS1.game.hasBegun && newPlayerObject.id != CS1.socket.id) {
+      setTimeout(()=>{CS1.say(`${newPlayerObject.name} has joined the game!`)},1000);
+      CS1.addOtherPlayer(newPlayerObject);
+    }
+  });
+  
+  socket.on('initial-bodies-state', data=>{
+    if(CS1.debug){
+      console.warn('SETTING INITIAL BODIES STATE');
+      console.log(data);
+    }
+    CS1.updateGrabbables(data);
+  });
+  
   let isEqual=CS1.utils.isEqual;
   //Object.is(socket.playerData, socket.lastPlayerData)
   socket.sendUpdateToServer = ()=>{
     if(!Object.is(socket.playerData, socket.lastPlayerData)){
       socket.emit('send-update',socket.playerData);
-         console.log("SENDING UPDATE");
+      //console.log("SENDING UPDATE");
       socket.lastPlayerData = Object.assign({}, socket.playerData);
       let bodiesData = [];
       for(var name in CS1.grabbables){
@@ -127,7 +143,7 @@ export default CS1=>{
     if(CS1.game.hasBegun && CS1.otherPlayers[id]){
       let name = CS1.otherPlayers[id].name;
       CS1.removePlayer(id);
-      setTimeout(()=>{window.say(`${name} has left the game!`)},1500);
+      setTimeout(()=>{CS1.say(`${name} has left the game!`)},1500);
     }
   });
   
