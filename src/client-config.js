@@ -1,5 +1,5 @@
 export default {
- gameName:"Maine JS Meetup Group . . . . . . The question of whether a computer can think is no more interesting than the question of whether a submarine can swim. . . Edsger W. Dijkstra",
+ gameName:"CS1 Agency Headquarters . . . . . . The question of whether a computer can think is no more interesting than the question of whether a submarine can swim. . . Edsger W. Dijkstra",
  // https://emojipedia.org/  leave as "" if you want no emoji
  emoji:"🏰",
  // https://www141.lunapic.com/editor/  http://icoconvert.com/
@@ -46,7 +46,7 @@ export default {
   speed: 140
  },
  sounds:{
-  playerJoined: {url:'https://cdn.glitch.com/630690db-5297-4f44-9d50-b6fb8e795635%2Fpacman_beginning.mp3?1551712015377'},
+  playerJoined: {url:'https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2Felevator.mp3?1552143572126'},
   playerLeft: {url:'https://cdn.glitch.com/7f007e49-e78d-40b6-964d-097554282381%2Ffarewell.mp3?1545526194837'},
   yay: {url:'https://cdn.glitch.com/162b879e-fd42-40d9-8519-671d783b8c70%2Fyay.mp3?1538839840045',loop:false,volume:0.8},
   splashIn: {url:'https://cdn.glitch.com/b10e1289-ada6-412c-a444-83b2ee39c4a0%2FsplashIn.mp3?1544623314600',loop:false,volume:0.8},
