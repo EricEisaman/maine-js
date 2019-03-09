@@ -1,7 +1,7 @@
 export default CS1=>{AFRAME.registerComponent("collectible", {
 	schema: {
     threshold: {type: 'number', default: 2.0},
-    soundCollect: {type: 'string',default:'https://cdn.glitch.com/630690db-5297-4f44-9d50-b6fb8e795635%2Fcollect.mp3?1551286422648'},
+    soundCollect: {type: 'string',default:'https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2Fpowerup_1.mp3?1552158629039'},
     soundLoop: {}
 	},
 	init: function()
