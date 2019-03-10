@@ -19,12 +19,7 @@ export default CS1=>{
     CS1.hud.pointsDial = new RingDial(containers.top,'points','','#ccc','white','red');
     CS1.hud.statusDial = new RingDial(containers.top,'status','%','#ccc','white','lime');
     CS1.hud.magicDial = new RingDial(containers.top,'magic','%','#ccc','white','#b45ef9');
-    CS1.hud.oxygenMeter = new Meter(containers.top,'oxygen','#ccc',0.9);
-    setInterval(e=>{
-      CS1.hud.statusDial.animateTo(100*Math.random());
-      CS1.hud.magicDial.animateTo(100*Math.random());
-      CS1.hud.oxygenMeter.animateTo(Math.random());
-    },4000);
+    CS1.hud.oxygenMeter = new Meter(containers.top,'oxygen','#ccc',1.0);
   });
   
   function generateRegions(hudElement){

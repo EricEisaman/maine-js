@@ -6,10 +6,14 @@ export default class Meter{
     this.widget.style.marginTop = window.innerWidth/81 + 'px';
     this.widget.style.marginBottom = window.innerWidth/81 + 'px';
     this.widget.style.color = color;
+    this.value = 0;
     this.min = parseFloat(min);
     this.max = parseFloat(max);
     this.range = max-min;
     this.el = document.createElement('meter');
+    this.el.cachedValue = this.value;
+    this.el.targetValue = false;
+    this.el.isAnimating = false;
     this.el.setAttribute('value',value);
     this.el.setAttribute('min',min);
     this.el.setAttribute('max',max);
@@ -30,6 +34,7 @@ export default class Meter{
       var v = parseFloat(this.el.getAttribute('value'));
       var self = this.el;
       self.range = this.range;
+      self.isAnimating = true;
       var intervalOne = setInterval(function() {
           var p =  (v>to)? +(to /v).toFixed(4)  : +(v / to).toFixed(4);
           var a = (p < 0.95) ? self.range/30 - (self.range/30 * p) : 0.003;
@@ -39,19 +44,31 @@ export default class Meter{
               // Stop
               if(v <= -to) {
                   self.value = to
+                  if(to<=0)self.setValue(0);
                   clearInterval(intervalOne);
+                  self.cachedValue = self.value;
+                  self.isAnimating = false;
               }
           }else {
              v += a;
               // Stop
               if(v >= +to) {
                   self.value = to;
+                  if(to>=100)self.setValue(100);
                   clearInterval(intervalOne);
+                  self.cachedValue = self.value;
+                  self.isAnimating = false;
               }
           }
           self.value = v;
+          this.value = v;
       }, 10);
   };
+  
+  changeBy(amt) {
+     this.el.targetValue = this.el.targetValue?this.el.targetValue+amt:this.el.cachedValue+amt;
+     this.animateTo(this.el.targetValue);
+  }
   
 
 

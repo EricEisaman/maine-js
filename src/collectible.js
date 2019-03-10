@@ -3,7 +3,9 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
     threshold: {type: 'number', default: 2.7},
     soundCollect: {type: 'string',default:'https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2Fpowerup_1.mp3?1552158629039'},
     soundLoop: {},
-    cb:{type:'string',default:''}
+    cb:{type:'string',default:''},
+    affects:{type:'string',default:''},
+    value:{type:'number',default:1}
 	},
 	init: function()
 	{
@@ -32,8 +34,8 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
         collectedEntity.soundIsPlaying=false;
         collectedEntity.pause();     
       });
-      if(data.collector==CS1.socket.id){
-        CS1.hud.pointsDial.animateTo(CS1.hud.pointsDial.value+5);
+      if(data.collector==CS1.socket.id && collectedEntity.data.affects){        
+        CS1.hud[collectedEntity.data.affects].changeBy(collectedEntity.data.value);
       }
     });
   }, 
@@ -54,7 +56,8 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       this.soundIsPlaying=true;
       this.el.components.sound__collect.playSound();
       if(this.data.cb)CS1.game[this.data.cb](this.el);
-      CS1.hud.pointsDial.animateTo(CS1.hud.pointsDial.value+5);
+      if(this.data.affects)
+        CS1.hud[this.data.affects].animateTo(CS1.hud[this.data.affects].value+this.data.value);
       this.el.addEventListener('sound-ended',e=>{
         this.soundIsPlaying=false;
         this.pause();   
