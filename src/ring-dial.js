@@ -4,6 +4,9 @@ const RingDial = function(container,labelText,suffix="",labelColor='#e23fcf',gra
     this.strokeWidth = this.size / 8;
     this.radius = (this.size / 2) - (this.strokeWidth / 2);
     this.value = 0;
+    this.cachedValue = this.value;
+    this.targetValue = false;
+    this.isAnimating = false;
     this.direction = 'up';
     this.svg;
     this.defs;
@@ -158,6 +161,7 @@ RingDial.prototype.animateStart = function() {
 RingDial.prototype.animateTo = function(to) {
     var v = this.value;
     var self = this;
+    this.isAnimating = true;
     var intervalOne = setInterval(function() {
         var p =  (v>to)? +(to /v).toFixed(2)  : +(v / to).toFixed(2);
         var a = (p < 0.95) ? 2 - (2 * p) : 0.05;
@@ -166,18 +170,35 @@ RingDial.prototype.animateTo = function(to) {
             // Stop
             if(v <= -to) {
                 self.value = to;
+                if(to<=0)self.setValue(0);
                 clearInterval(intervalOne);
+                self.cachedValue = self.value;
+                self.isAnimating = false;
             }
         }else {
            v += a;
             // Stop
             if(v >= +to) {
                 self.value = to;
+                if(to>=100){
+                  self.svg.currentScale=0
+                  setTimeout(e=>{
+                    self.setValue(100);
+                    self.svg.currentScale=1;
+                  },100);
+                }
                 clearInterval(intervalOne);
+                self.cachedValue = self.value;
+                self.isAnimating = false;
             }
         }
         self.setValue(v);
     }, 10);
+};
+
+RingDial.prototype.changeBy = function(amt) {
+   this.targetValue = this.targetValue?this.targetValue+amt:this.cachedValue+amt;
+   this.animateTo(this.targetValue);
 };
 
 RingDial.prototype.animateReset = function() {
