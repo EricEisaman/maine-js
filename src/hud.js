@@ -17,7 +17,7 @@ export default CS1=>{
     let hudElement = document.querySelector('#hud');
     let containers = generateRegions(hudElement);
     CS1.hud.pointsDial = new RingDial(containers.top,'points','','#ccc','white','red');
-    CS1.hud.statusDial = new RingDial(containers.top,'status','%','#ccc','white','lime');
+    CS1.hud.energyDial = new RingDial(containers.top,'energy','%','#ccc','white','lime');
     CS1.hud.magicDial = new RingDial(containers.top,'magic','%','#ccc','white','#b45ef9');
     CS1.hud.oxygenMeter = new Meter(containers.top,'oxygen','#ccc',1.0);
   });
