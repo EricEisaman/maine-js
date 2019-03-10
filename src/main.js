@@ -8,6 +8,8 @@ import navpointer from './nav-pointer';
 import player from './player';
 import d3graph from './d3-graph';
 import shaderfrog from './shader-frog';
+import particles from './particles';
+particles(CS1);
 import proximityGlitch from './proximity-glitch'
 import hud from './hud';
 import './hud.css';
