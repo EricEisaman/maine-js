@@ -2,7 +2,8 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
 	schema: {
     threshold: {type: 'number', default: 2.0},
     soundCollect: {type: 'string',default:'https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2Fpowerup_1.mp3?1552158629039'},
-    soundLoop: {}
+    soundLoop: {},
+    cb:{type:'string',default:''}
 	},
 	init: function()
 	{
@@ -23,7 +24,11 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       collectedEntity.el.setAttribute('visible',false);
       collectedEntity.soundIsPlaying=true;
       collectedEntity.el.components.sound__collect.playSound();
+      if(collectedEntity.data.cb){
+        CS1.game[collectedEntity.data.cb](collectedEntity.el);
+      }
       collectedEntity.el.addEventListener('sound-ended',e=>{
+        collectedEntity.soundIsPlaying=false;
         collectedEntity.pause();     
       });
       if(data.collector==CS1.socket.id){
@@ -46,8 +51,10 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       this.el.setAttribute('visible',false);
       this.soundIsPlaying=true;
       this.el.components.sound__collect.playSound();
+      if(this.data.cb)CS1.game[this.data.cb](this.el);
       CS1.hud.pointsDial.animateTo(CS1.hud.pointsDial.value+5);
       this.el.addEventListener('sound-ended',e=>{
+        this.soundIsPlaying=false;
         this.pause();   
       }); 
     } else{

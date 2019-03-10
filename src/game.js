@@ -159,5 +159,11 @@ export default CS1=>{AFRAME.registerComponent('game', {
   },
   playerDistanceTo: function (entity) {
     return CS1.myPlayer.object3D.position.distanceTo(entity.object3D.position);
+  },
+  fireParticles: function(el){
+    el.components.particles.fire();
   }
+  
+  
+  
 });}

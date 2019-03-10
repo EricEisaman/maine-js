@@ -27,7 +27,7 @@ export default (function player(){
     processData: function(dataToProcess){
         this.data = [];
         dataToProcess.list.forEach(day=>{
-          console.log(day.dt_txt , this.k2f(day.main.temp_max)+'F');
+          //console.log(day.dt_txt , this.k2f(day.main.temp_max)+'F');
           this.data.push({dt:day.dt_txt,temp_max:this.k2f(day.main.temp_max)});
         });
         this.dataProcessed=true;
