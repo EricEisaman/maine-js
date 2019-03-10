@@ -1,5 +1,20 @@
-# This will be the next CS1 project
+# CS1 Headquarters
 ____
+
+
+## Quick Start (Detailed Instructions to Come)
+
+🍎 Remix this project.
+
+🍎 Add an **ADMIN_KEY** in **.env**
+
+🍎 For the admin account, login with admin and your ADMIN_KEY.
+
+🍎 Add additional accounts through the client console.
+```js
+CS1.socket.emit('add-user',{key:[ADMIN_KEY],name:[new username],pw:[new user pw]})
+```
+
 
 ## Overview
 
