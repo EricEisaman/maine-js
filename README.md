@@ -53,8 +53,8 @@ refresh
 - glitch
 - godrays
 
-🍎 Particles System
-- JSON particles bundling (TODO)
+🍎 [A-Frame Particle Player](https://github.com/supermedium/aframe-particleplayer-component)
+- JSON particles bundling
 
 🍎 BGM System
 - via SoundCloud (TODO)
