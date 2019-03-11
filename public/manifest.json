@@ -1,17 +1,17 @@
 {
-  "name": "ELHS CS1",
+  "name": "CS1",
   "short_name": "CS1",
-  "description": "ELHS Computer Science",
+  "description": "Introduction to Computer Science",
   "icons": [
     {
       "sizes": "192x192",
       "type": "image/png",
-      "src": "https://cdn.glitch.com/9ad2ae7c-3f18-45f2-8917-4e675bd381da%2Feddies_192.png?1549770718530"
+      "src": "https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2FCS1_192.png?1552299344920"
     },
     {
       "sizes": "512x512",
       "type": "image/png",
-      "src": "https://cdn.glitch.com/9ad2ae7c-3f18-45f2-8917-4e675bd381da%2Feddies_512.png?1549770721365"
+      "src": "https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2FCS1.png?1552299028732"
     }
   ],
   "display": "fullscreen",
