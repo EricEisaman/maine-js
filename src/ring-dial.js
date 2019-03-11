@@ -1,5 +1,15 @@
-const RingDial = function(container,labelText,suffix="",labelColor='#e23fcf',gradientColor1='#78F8EC',gradientColor2='#6E4AE2') {
-    this.container = container;
+
+const defaults={
+  labelText: 'Label Text',
+  suffix: '',
+  labelColor: '#e23fcf',
+  gradientColor1: '#78F8EC',
+  gradientColor2: '#6E4AE2',
+  max: 100
+}
+
+const RingDial = function(custom) {
+    this.opts = Object.assign({}, defaults, custom);
     this.size = window.innerWidth/9;
     this.strokeWidth = this.size / 8;
     this.radius = (this.size / 2) - (this.strokeWidth / 2);
@@ -14,10 +24,8 @@ const RingDial = function(container,labelText,suffix="",labelColor='#e23fcf',gra
     this.overlay;
     this.text;
     this.label;
-    this.labelText = labelText;
-    this.suffix = suffix;
     this.arrow;
-    this.create(labelColor,gradientColor1,gradientColor2);
+    this.create(this.opts.labelColor,this.opts.gradientColor1,this.opts.gradientColor2);
 }
 
 RingDial.prototype.create = function(labelColor,gradientColor1,gradientColor2) {
@@ -28,7 +36,7 @@ RingDial.prototype.create = function(labelColor,gradientColor1,gradientColor2) {
     this.createText(gradientColor2);
     //this.createArrow();
     this.createLabel(labelColor);
-    this.container.appendChild(this.svg);
+    this.opts.container.appendChild(this.svg);
 };
 
 RingDial.prototype.createSvg = function() {
@@ -41,7 +49,7 @@ RingDial.prototype.createSvg = function() {
 RingDial.prototype.createDefs = function(gc1,gc2) {
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-    linearGradient.setAttribute('id', 'gradient'+this.labelText);
+    linearGradient.setAttribute('id', 'gradient'+this.opts.LabelText);
     var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
     stop1.setAttribute('stop-color', gc2);
     stop1.setAttribute('offset', '0%');
@@ -97,14 +105,14 @@ RingDial.prototype.createText = function(c) {
     text.setAttribute('fill', c);
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
-    text.innerHTML = 0 + `<tspan font-size=${tspanSize} dy=${-tspanSize * 1.2}>${this.suffix}</tspan>`;
+    text.innerHTML = 0 + `<tspan font-size=${tspanSize} dy=${-tspanSize * 1.2}>${this.opts.suffix}</tspan>`;
     this.svg.appendChild(text);
     this.text = text;
 };
 
 RingDial.prototype.createLabel = function(c) {
     let n=4.5;
-    if(this.labelText.length>8)n=7
+    if(this.opts.labelText.length>8)n=7
     var fontSize = this.size / n;
     var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     text.setAttribute('x', this.size / 2);
@@ -114,7 +122,7 @@ RingDial.prototype.createLabel = function(c) {
     text.setAttribute('fill', c);
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
-    text.innerHTML = this.labelText;
+    text.innerHTML = this.opts.labelText;
     this.svg.appendChild(text);
     this.label = text;
 };
@@ -159,6 +167,8 @@ RingDial.prototype.animateStart = function() {
 };
 
 RingDial.prototype.animateTo = function(to) {
+    if(to>this.opts.max)to=this.opts.max;
+    if(to<0)to=0;
     var v = this.value;
     var self = this;
     this.isAnimating = true;
@@ -170,7 +180,6 @@ RingDial.prototype.animateTo = function(to) {
             // Stop
             if(v <= -to) {
                 self.value = to;
-                if(to<=0)self.setValue(0);
                 clearInterval(intervalOne);
                 self.cachedValue = self.value;
                 self.isAnimating = false;
@@ -180,10 +189,10 @@ RingDial.prototype.animateTo = function(to) {
             // Stop
             if(v >= +to) {
                 self.value = to;
-                if(to>=100){
+                if(to>=self.opts.max){
                   self.svg.currentScale=0
                   setTimeout(e=>{
-                    self.setValue(100);
+                    self.setValue(self.opts.max);
                     self.svg.currentScale=1;
                   },100);
                 }
@@ -225,14 +234,14 @@ RingDial.prototype.describeArc = function(x, y, radius, startAngle, endAngle){
 }
 
 RingDial.prototype.setValue = function(value) {	
-		var c = (value / 100) * 360;
+		var c = (value / this.opts.max) * 360;
 		if(c === 360)
 			c = 359.99;
 		var xy = this.size / 2 - this.strokeWidth / 2;
 		var d = this.describeArc(xy, xy, xy, 180, 180 + c);
     this.slice.setAttribute('d', d);
     var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + `<tspan font-size=${tspanSize} dy=${-tspanSize * 1.2}>${this.suffix}</tspan>`;
+    this.text.innerHTML = Math.floor(value) + `<tspan font-size=${tspanSize} dy=${-tspanSize * 1.2}>${this.opts.suffix}</tspan>`;
 };
 
 export default RingDial;
