@@ -49,7 +49,7 @@ RingDial.prototype.createSvg = function() {
 RingDial.prototype.createDefs = function(gc1,gc2) {
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-    linearGradient.setAttribute('id', 'gradient'+this.opts.LabelText);
+    linearGradient.setAttribute('id', 'gradient'+this.opts.labelText);
     var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
     stop1.setAttribute('stop-color', gc2);
     stop1.setAttribute('offset', '0%');
@@ -77,7 +77,7 @@ RingDial.prototype.createDefs = function(gc1,gc2) {
 RingDial.prototype.createSlice = function() {
     var slice = document.createElementNS("http://www.w3.org/2000/svg", "path");
     slice.setAttribute('fill', 'none');
-    slice.setAttribute('stroke', `url(#gradient${this.labelText})`);
+    slice.setAttribute('stroke', `url(#gradient${this.opts.labelText})`);
     slice.setAttribute('stroke-width', this.strokeWidth);
     slice.setAttribute('transform', 'translate(' + this.strokeWidth / 2 + ',' + this.strokeWidth / 2 + ')');
     slice.setAttribute('class', 'animate-draw');
