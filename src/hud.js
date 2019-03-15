@@ -16,7 +16,6 @@ export default CS1=>{
     CS1.hud = {};
     let hudElement = document.querySelector('#hud');
     let containers = generateRegions(hudElement);
-    CS1.hud.oxygenMeter = new Meter(containers.top,'oxygen','#ccc',1.0);
     CS1.hud.pointsDial = new RingDial({
         container: containers.top,
         labelText: 'points',
@@ -42,6 +41,7 @@ export default CS1=>{
         suffix: '%',
         max: 100                     
     });
+    CS1.hud.oxygenMeter = new Meter(containers.top,'oxygen','#ccc',1.0);
   
   function generateRegions(hudElement){
    let containers = {};
