@@ -12,7 +12,7 @@ ____
 
 ____
 
-## Quick Start (Detailed Instructions to Come)
+## Quick Start 
 
 🍎 Remix this project.
 
