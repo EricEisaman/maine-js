@@ -83,7 +83,7 @@ ____
 
 🍎 Describe **HTML**, **CSS**, and **JavaScript**.
 
-🍎 Describe a **Node.js**.
+🍎 Describe **Node.js**.
 
 🍎 Describe a **websocket** connection.
 
