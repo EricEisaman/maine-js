@@ -5,7 +5,9 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
     soundLoop: {},
     cb:{type:'string',default:''},
     affects:{type:'string',default:''},
-    value:{type:'number',default:1}
+    value:{type:'number',default:1},
+    spawns:{type:'boolean',default:false},
+    spawnDelay:{type:'number',default:5}
 	},
 	init: function()
 	{
@@ -16,10 +18,14 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
     this.soundIsPlaying=false;
     if(!CS1.socket._callbacks["$request-for-collectibles"])
     CS1.socket.on('request-for-collectibles',()=>{
-      CS1.socket.emit('initial-collectibles-state', CS1.collectibles.length);
+      let d=[];
+      CS1.collectibles.forEach(c=>{
+        d.push({spawns:c.data.spawns,spawnDelay:c.data.spawnDelay});
+      });
+      CS1.socket.emit('initial-collectibles-state', d);
     });
-    if(!CS1.socket._callbacks["$update-collectible"])
-    CS1.socket.on('update-collectible',data=>{
+    if(!CS1.socket._callbacks["$collect"])
+    CS1.socket.on('collect',data=>{
       if(!(CS1.game && CS1.game.hasBegun))return;
       let collectedEntity = CS1.collectibles[data.index];
       if(collectedEntity.el.components.sound__loop)collectedEntity.el.components.sound__loop.pause();
@@ -37,6 +43,14 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       if(data.collector==CS1.socket.id && collectedEntity.data.affects){        
         CS1.hud[collectedEntity.data.affects].changeBy(collectedEntity.data.value);
       }
+    });
+    if(!CS1.socket._callbacks["$spawn-collectible"])
+    CS1.socket.on('spawn-collectible',index=>{
+      let collectedEntity = CS1.collectibles[index];
+      if(collectedEntity.el.components.sound__loop)collectedEntity.el.components.sound__loop.play();
+      collectedEntity.el.setAttribute('visible',true);
+      collectedEntity.el.setAttribute('scale','1 1 1');
+      collectedEntity.play();
     });
   }, 
 	tick: function()
