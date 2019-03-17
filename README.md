@@ -103,7 +103,7 @@ refresh
 ```
 🍎 Join your game with the **admin** username and **ADMIN_KEY** password.
 
-🍎 Add a **new user** to the game database.
+🍎 Add a **new user** to the game database from the **client console**.
 
 ```
 CS1.socket.emit('add-user', {key:[ADMIN_KEY], name:[new username], pw:[new user's password]})
