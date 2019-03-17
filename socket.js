@@ -37,7 +37,7 @@ module.exports = (io)=>{
           }else{
             collectibles.forEach((c,index)=>{
                if(c.collector){
-                 socket.emit('update-collectible',{index:index,collector:c.collector});
+                 socket.emit('collect',{index:index,collector:c.collector});
                  console.log('Sending collectible update to new player:');
                  console.log(c);
                }
@@ -78,22 +78,32 @@ module.exports = (io)=>{
         });  
         socket.on('request-collection',function(data){
          if(!socket.auth)return;
-         console.log('collection requested');
-         console.log(data);
+         // console.log('collection requested');
+         // console.log(data);
          console.log(collectibles[data.index].collector);
          if(!collectibles[data.index].collector){
            collectibles[data.index].collector = socket.id;
-           io.emit('update-collectible',{index:data.index,collector:socket.id});
+           io.emit('collect',{index:data.index,collector:socket.id});
            console.log('collection made');
+           if(collectibles[data.index].spawns){
+             setTimeout(()=>{
+               io.emit('spawn-collectible',data.index);
+               collectibles[data.index].collector = false;
+               console.log('calling to spawn collectible');
+             },collectibles[data.index].spawnDelay*1000);
+           }
          }
         });
-        socket.on('initial-collectibles-state',function(n){
+        socket.on('initial-collectibles-state',function(d){
            console.log('Collectibles initializing.');
-           for(let i=0; i<n; i++){
+           for(let i=0; i<d.length; i++){
              let c = {};
+             c.spawns = d[i].spawns;
+             c.spawnDelay = Number(d[i].spawnDelay);
              c.collector = false;
              collectibles[i] = c;
            }
+          console.log(collectibles);
         });
         socket.on('hyperspace-alert',data=>{
           socket.broadcast.emit('hyperspace',data);

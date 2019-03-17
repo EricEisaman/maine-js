@@ -47,6 +47,7 @@ refresh
 🍎 Collectibiles System
 - Offline collection
 - Online collection
+- Collectibles can be set to respawn (TODO)
 
 🍎 [A-Frame Effects](https://github.com/wizgrav/aframe-effects)
 - bloom
