@@ -21,7 +21,7 @@ CS1.socket.emit('add-user',{key:[ADMIN_KEY],name:[new username],pw:[new user pw]
 pnpm run build
 refresh
 ```
-
+____
 
 ## Overview
 
@@ -62,5 +62,58 @@ refresh
 
 🍎 Player Component
 - move player logic and state from game component to player component (TODO)
+
+____
+
+## Lesson One
+
+#### Objectives
+
+🍎 Describe the **server** and the **client**.
+
+🍎 Describe **HTML**, **CSS**, and **JavaScript**.
+
+🍎 Describe a **Node.js**.
+
+🍎 Describe a **websocket** connection.
+
+🍎 Describe a **persistent data** and **database**.
+
+🍎 Create an **ADMIN_KEY** in the **.env** file.
+
+🍎 Create a custom **gameName** value in the **src/client-config.js** file.
+
+🍎 Build the client **bundle.js** and **bundle.css** in the **Tools/Console**.
+
+```
+
+pnpm run build
+refresh
+
+```
+🍎 Join your game with the **admin** username and **ADMIN_KEY** password.
+
+🍎 Add a **new user** to the game database.
+
+```
+CS1.socket.emit('add-user', {key:[ADMIN_KEY], name:[new username], pw:[new user's password]})
+
+```
+
+🍎 Test multiplayer functionality by logging in with two users.
+
+____
+
+
+## Lesson Two 
+
+
+🍎 Describe a **Progressive Web Application (PWA)**.
+
+🍎 Create your own **PWA icons** at **512x512** and **192x192** pixel resolutions.
+
+🍎 Customize your **public/manifest.json** file.
+
+🍎 Install your **PWA** on a **phone**, **tablet**, or **Windows 10 device**.
     
     
