@@ -73,6 +73,8 @@ ____
 
 ____
 
+## <a href="https://docs.google.com/presentation/d/e/2PACX-1vSm0Bv326sS-haY14GL5SUnpuE1jdtX_WvIWBljpKMtOk0fcnXwu-fNEp3cAk1TcsQ0NZl7HllgsK7Q/pub?start=false&loop=false&delayms=60000" noopener noreferer>Curriculum</a>
+
 ## Lesson One
 
 #### Objectives
