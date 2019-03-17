@@ -6,7 +6,7 @@ ____
 
 ## Mission
 
-Provide the JavaScript community with a game engine providing a fast track to high performance 3D VR multiplayer games installable on phones, tablets, laptops, desktops as Progressive Web Applications (PWAs). 
+Provide the JavaScript community with a fast track to high performance 3D VR multiplayer games installable on phones, tablets, laptops, and desktops as Progressive Web Applications (PWAs). The resultant games is also be compatible with many popular VR HMD and controller systems such as the Oculus Quest.
 
 Provide computer science students and teachers with an accompanying introductory level curriculum.
 
