@@ -53,6 +53,7 @@ refresh
 - bloom
 - glitch
 - godrays
+- fxaa
 
 🍎 [A-Frame Particle Player](https://github.com/supermedium/aframe-particleplayer-component)
 - JSON particles bundling
