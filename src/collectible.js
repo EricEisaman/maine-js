@@ -76,6 +76,14 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
         this.soundIsPlaying=false;
         this.pause();   
       }); 
+      if(this.data.spawns){
+             setTimeout(()=>{
+                if(this.el.components.sound__loop)this.el.components.sound__loop.play();
+                this.el.setAttribute('visible',true);
+                this.el.setAttribute('scale','1 1 1');
+                this.play();
+             },this.data.spawnDelay*1000);
+           }
     } else{
       CS1.socket.emit('request-collection',{index: CS1.collectibles.indexOf(this)}); 
     

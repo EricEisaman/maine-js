@@ -28,7 +28,8 @@ window.onload = e=>{
     if(!(CS1 && CS1.socket.connected)){
       loginContainer.style.zIndex = -1;
       CS1.myPlayer.components["movement-controls"].data.speed=CS1.myPlayer.startSpeed;
-    }
+      CS1.sounds.playerJoined.play();
+      setTimeout(()=>{CS1.say(`Welcome to ${CS1.game.name}!`);},CS1.game.welcomeDelay);    }
     else if(document.getElementById('name').value.length > 0 && document.getElementById('pw').value.length > 0){
       CS1.login(document.getElementById('name').value,document.getElementById('pw').value);
       document.getElementById('name').value = '';
@@ -39,3 +40,4 @@ window.onload = e=>{
 }
   
 })()
+
