@@ -4,6 +4,14 @@
 #### version 0.3.0
 ____
 
+## Mission
+
+Provide the JavaScript community with a game engine providing a fast track to high performance 3D VR multiplayer games installable on phones, tablets, laptops, desktops as Progressive Web Applications (PWAs). 
+
+Provide computer science students and teachers with an accompanying introductory level curriculum.
+
+____
+
 ## Quick Start (Detailed Instructions to Come)
 
 🍎 Remix this project.
