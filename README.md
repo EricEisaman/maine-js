@@ -83,11 +83,11 @@ ____
 
 🍎 Describe **HTML**, **CSS**, and **JavaScript**.
 
-🍎 Describe a **Node.js**.
+🍎 Describe **Node.js**.
 
 🍎 Describe a **websocket** connection.
 
-🍎 Describe a **persistent data** and **database**.
+🍎 Describe **persistent data** and **database**.
 
 🍎 Create an **ADMIN_KEY** in the **.env** file.
 
