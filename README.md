@@ -93,7 +93,7 @@ ____
 
 🍎 Create a custom **gameName** value in the **src/client-config.js** file.
 
-🍎 Build the client **bundle.js** and **bundle.css** in the **Tools/Console**.
+🍎 Build the client **bundle.js** and **bundle.css** in the server **Tools/Console**.
 
 ```
 
