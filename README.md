@@ -24,7 +24,7 @@ ____
 ```js
 CS1.socket.emit('add-user',{key:[ADMIN_KEY],name:[new username],pw:[new user pw]})
 ```
-🍎 After changing any src/ files, in the Tools/Console run:
+🍎 After changing any src/ files, in the server Tools/Console run:
 ```sh
 pnpm run build
 refresh
