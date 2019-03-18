@@ -56,7 +56,7 @@ ____
 - Online collection
 - Collectibles can be set to respawn
 
-🍎 Items can be declared grabbable, therefore movable by players.
+🍎 Items can be declared **grabbable**, therefore movable by players.
 
 🍎 [A-Frame Effects](https://github.com/wizgrav/aframe-effects)
 - bloom
