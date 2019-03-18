@@ -26,12 +26,14 @@ export default CS1=>{
       let pos = this.el.getAttribute('position');
       
       let posString = `${pos.x} ${pos.y} ${pos.z}`;
+      
+      this.e;
   
       if(this.data.type=='magic'){
-        let e = document.createElement('a-entity');
+        this.e = document.createElement('a-entity');
 
-        e.setAttribute('position',posString);
-        e.setAttribute('scale','4 1.5 4');
+        this.e.setAttribute('position',posString);
+        this.e.setAttribute('scale','4 1.5 4');
         this.p1 = document.createElement('a-entity');
         this.p2 = document.createElement('a-entity');
         this.p3 = document.createElement('a-entity');
@@ -41,11 +43,11 @@ export default CS1=>{
         this.p2.setAttribute('particleplayer',`color:${this.data.color}; src: energy; img:#energy-tex; dur: 2000; count: 100%; scale: ${this.data.scale}; pscale: 12; interpolate: false; shader: standard; poolSize: 1; loop: ${this.data.loop};`);
         this.p3.setAttribute('particleplayer',`src: dust; img: #dust-tex; dur: 2000; count: 100%; scale: ${this.data.scale}; pscale: 1; interpolate: false; shader: standard; poolSize: 1; loop: ${this.data.loop}; color: #558`);
 
-        e.appendChild(this.p1);
-        e.appendChild(this.p2);
-        e.appendChild(this.p3);
+        this.e.appendChild(this.p1);
+        this.e.appendChild(this.p2);
+        this.e.appendChild(this.p3);
 
-        document.querySelector('a-scene').appendChild(e);
+        document.querySelector('a-scene').appendChild(this.e);
           
       }
     },
@@ -53,6 +55,9 @@ export default CS1=>{
     
     },
     fire: function(){
+      let pos = this.el.getAttribute('position'); 
+      let posString = `${pos.x} ${pos.y} ${pos.z}`;
+      this.e.setAttribute('position',posString);
       this.p1.components.particleplayer.start();
       this.p2.components.particleplayer.start();
       this.p3.components.particleplayer.start();
