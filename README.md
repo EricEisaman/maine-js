@@ -129,5 +129,12 @@ ____
 🍎 Describe the  **JSON** file format and common use cases.
 
 🍎 Install your **PWA** on a **phone**, **tablet**, or **Windows 10 device**.
+
+____
+
+## Issues
+
+🍎 Particle effects are not currently being moved when an associated grabable item is moved.
+
     
     
