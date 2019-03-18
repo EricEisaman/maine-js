@@ -134,7 +134,7 @@ ____
 
 ## Issues
 
-🍎 Particle effects are not currently being moved when an associated grabable item is moved.
+🍎 Particle effects are not currently being moved when an associated grabbable item is moved.
 
     
     
