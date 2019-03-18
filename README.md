@@ -136,7 +136,7 @@ ____
 
 ## Issues
 
-🍎 Particle effects are not currently being moved when an associated grabbable item is moved.
+🍎 Please post any issues to <a href="https://github.com/EricEisaman/maine-js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc" noopener noreferer>GitHub</a>.
 
     
     
